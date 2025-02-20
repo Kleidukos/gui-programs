@@ -15,9 +15,9 @@ extra-doc-files:    CHANGELOG.md
 common warnings
     ghc-options: -Wall
 
-executable gui-programs
+executable combobox
     import:           warnings
-    main-is:          Main.hs
+    main-is:          combobox/Main.hs
     build-depends:    
         base ^>=4.20,
         iced-hs,
