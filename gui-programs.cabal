@@ -1,25 +1,38 @@
-cabal-version:      3.0
-name:               gui-programs
-version:            0.1.0.0
+cabal-version: 3.0
+name: gui-programs
+version: 0.1.0.0
 -- synopsis:
 -- description:
-license:            BSD-3-Clause
-license-file:       LICENSE
+license: BSD-3-Clause
+license-file: LICENSE
 -- author:
 -- maintainer:
 -- copyright:
-build-type:         Simple
-extra-doc-files:    CHANGELOG.md
--- extra-source-files:
+build-type: Simple
+extra-doc-files: CHANGELOG.md
 
+-- extra-source-files:
 common warnings
-    ghc-options: -Wall
+  ghc-options: -Wall
 
 executable combobox
-    import:           warnings
-    main-is:          combobox/Main.hs
-    build-depends:    
-        base ^>=4.20,
-        iced-hs,
-    hs-source-dirs:   app
-    default-language: GHC2024
+  import: warnings
+  main-is: combobox/Main.hs
+  build-depends:
+    base ^>=4.20,
+    iced-hs,
+
+  hs-source-dirs: app
+  default-language: GHC2024
+
+executable todo
+  import: warnings
+  main-is: todo/Main.hs
+  build-depends:
+    base ^>=4.20,
+    iced-hs,
+    text,
+    vector,
+
+  hs-source-dirs: app
+  default-language: GHC2024
