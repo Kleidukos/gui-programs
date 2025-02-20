@@ -11,12 +11,51 @@ license-file: LICENSE
 build-type: Simple
 extra-doc-files: CHANGELOG.md
 
--- extra-source-files:
-common warnings
-  ghc-options: -Wall
+common common-extensions
+  default-extensions:
+    DeriveAnyClass
+    DerivingVia
+    DuplicateRecordFields
+    NoStarIsType
+    OverloadedLabels
+    OverloadedRecordDot
+    PackageImports
+    PolyKinds
+    RecordWildCards
+    RequiredTypeArguments
+    StrictData
+    TypeFamilies
+    UndecidableInstances
+    ViewPatterns
+
+  default-language: GHC2024
+
+common common-ghc-options
+  ghc-options:
+    -Wall
+    -Wcompat
+    -Widentities
+    -Wincomplete-record-updates
+    -Wincomplete-uni-patterns
+    -Wpartial-fields
+    -Wredundant-constraints
+    -fhide-source-paths
+    -Wno-unused-do-bind
+    -funbox-strict-fields
+    -Wunused-packages
+    -funbox-small-strict-fields
+    -Werror=incomplete-patterns
+
+common common-rts-options
+  ghc-options:
+    -rtsopts
+    -threaded
+    -with-rtsopts=-N
 
 executable combobox
-  import: warnings
+  import: common-extensions
+  import: common-ghc-options
+  import: common-rts-options
   main-is: combobox/Main.hs
   build-depends:
     base ^>=4.20,
@@ -26,9 +65,12 @@ executable combobox
   default-language: GHC2024
 
 executable todo
-  import: warnings
+  import: common-extensions
+  import: common-ghc-options
+  import: common-rts-options
   main-is: todo/Main.hs
   build-depends:
+    atomic-counter,
     base ^>=4.20,
     iced-hs,
     text,
